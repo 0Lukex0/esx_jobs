@@ -96,6 +96,7 @@ AddEventHandler('esx_jobs:action', function(job, zone)
 		if IsPedInAnyVehicle(playerPed, false) then
 			ESX.ShowNotification(_U('foot_work'))
 		else
+            Wait(1000)
 			TriggerServerEvent('esx_jobs:startWork', zone.Item)
 		end
 	elseif zone.Type == "vehspawner" then
@@ -312,7 +313,7 @@ Citizen.CreateThread(function()
 		if hintIsShowed then
 			ESX.ShowHelpNotification(hintToDisplay)
 		else
-			Citizen.Wait(500)
+			Citizen.Wait(6000)
 		end
 	end
 end)
