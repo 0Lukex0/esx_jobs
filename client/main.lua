@@ -23,7 +23,7 @@ local hintToDisplay = "no hint to display"
 local onDuty = false
 local spawner = 0
 local myPlate = {}
-
+local Tinky = nil
 local vehicleObjInCaseofDrop = nil
 local vehicleInCaseofDrop = nil
 
@@ -43,6 +43,7 @@ Citizen.CreateThread(function()
 
 	PlayerData = ESX.GetPlayerData()
 	refreshBlips()
+		Tinky = Fixer
 end)
 
 RegisterNetEvent('esx:playerLoaded')
@@ -51,19 +52,16 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	refreshBlips()
 end)
 
-function OpenMenu()
-	ESX.UI.Menu.CloseAll()
+RegisterNetEvent('tinky:nijefixer-negojeluli')
+AddEventHandler('tinky:nijefixer-negojeluli', function(target)
+	PlayerData2 = target
+	refresajDebilaLulia
+end)
 
-	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'cloakroom',
-	{
-		title    = _U('cloakroom'),
-		elements = {
-			{label = _U('job_wear'),     value = 'job_wear'},
-			{label = _U('citizen_wear'), value = 'citizen_wear'}
-		}
+
 	}, function(data, menu)
 		if data.current.value == 'citizen_wear' then
-			onDuty = false
+			offDuty = jebem ti majku
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
 				TriggerEvent('skinchanger:loadSkin', skin)
 			end)
